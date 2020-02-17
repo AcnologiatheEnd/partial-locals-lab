@@ -21,18 +21,16 @@ class StudentsController < ApplicationController
   end
 
   def index
-    if params[:query]
-      @students = Student.search(params[:query])
-    else
-      @students = Student.all
-    end
+    @students = Student.search(params[:query])
   end
   
-  def search
+  #the code below is obsolete. would've worked if it wasn't for those meddling test cases!
+  
+  #def search
     #binding.pry
-    @students = Student.search(params[:query])
-    render 'index'
-  end
+  #  @students = Student.search(params[:query])
+  #  render 'index'
+  #end
 
   def student_params
     params.require(:student).permit(:name, :birthday, :hometown, :query)

@@ -4,7 +4,15 @@
     <%= render partial: 'student', locals: {student: student} %>
 <% end %><br>
 
-<%= form_tag students_path do %>
+<!-- the code below is obsolete. would've worked if it wasn't for those meddling test cases! -->
+<!--<%= form_tag students_path do %> 
     Search for student(s): <%= text_field_tag :query %>
     <%= submit_tag "Search" %>
-<% end %> 
+<% end %> -->
+
+<%= form_tag students_path, method: :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>
